@@ -1,0 +1,9 @@
+FROM node:alpine
+
+COPY ./package.json .
+
+COPY ./auth.js .
+
+RUN npm install
+
+CMD ["node", "auth.js"] 
