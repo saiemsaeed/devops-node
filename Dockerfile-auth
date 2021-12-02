@@ -6,4 +6,6 @@ COPY ./auth.js .
 
 RUN npm install
 
+EXPOSE 3001
+
 CMD ["node", "auth.js"] 

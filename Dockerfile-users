@@ -1,6 +1,6 @@
 FROM node:alpine
 
-ENV PORT=8080
+ENV PORT=3002
 
 COPY ./package.json .
 
@@ -8,4 +8,6 @@ COPY ./users.js .
 
 RUN npm install
 
-CMD ["node", "users.js"] 
+EXPOSE 3002
+
+CMD ["npm", "start"] 

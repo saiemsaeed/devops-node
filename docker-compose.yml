@@ -1,0 +1,35 @@
+version: '3.7'
+services:
+  devops-auth:
+    build:
+      context: .
+      dockerfile: Dockerfile-auth
+    image: devops-auth
+    container_name: devops-auth
+    ports:
+      - '3001:3001'
+    environment:
+      - TOKEN=123321
+    restart: always
+    networks:
+      - default
+      
+  devops-users:
+    build:
+      context: .
+      dockerfile: Dockerfile-users
+    image: devops-users
+    container_name: devops-users
+    ports:
+      - '3002:3002'
+    environment:
+      - AUTH_URL=http://192.168.100.108:3001
+      - USER_NAME=HASEEB
+    restart: always
+    depends_on:
+      - devops-auth
+    networks:
+      - default
+  
+networks:
+  default:

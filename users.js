@@ -1,13 +1,26 @@
 const express = require('express');
+const axios = require('axios');
 
 const app = express();
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3002;
 
-app.get('/users', (req, res) => {
-  let users = ['Saiem', 'Maaz', 'Mooeed', 'Elif', 'Sara', 'Junaid'];
-  console.log(`USERS SENT FROM PORT ${PORT}`);
-  res.send({ port: PORT, users });
+app.get('/', (req, res) => {
+  let { token } = req.query;
+  let authUrl = process.env.AUTH_URL;
+  let url = `${authUrl}/auth`;
+
+  axios
+    .post(`${authUrl}/auth`, {
+      token,
+    })
+    .then((response) => {
+      res.send({ token, name: response.data });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.send({ message: 'TOKEN IS WRONG' });
+    });
 });
 
 app.listen(PORT, () => {
