@@ -15,7 +15,7 @@ let users = [
 ];
 
 app.get('/auth', (req, res) => {
-  res.send(`You are authenticated on port ${PORT}`);
+  res.send(`Welcome to Auth Service. I'm running on PORT ${PORT}`);
 });
 
 app.post('/auth', jsonParser, (req, res) => {
