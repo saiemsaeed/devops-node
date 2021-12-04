@@ -9,10 +9,9 @@ jobs:
       - env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-          DATE: $(date)
         run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-      - run: docker build . -f Dockerfile-auth -t saiemsaeed/devops-auth-service:${{ DATE }}
-      - run: docker push saiemsaeed/devops-auth-service:${{ DATE }}
+      - run: docker build . -f Dockerfile-auth -t saiemsaeed/devops-auth-service:${{ github.run_number }}
+      - run: docker push saiemsaeed/devops-auth-service:${{ github.run_number }}
   Build-Users-Service-Image:
     runs-on: ubuntu-latest
     steps:
