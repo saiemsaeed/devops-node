@@ -7,7 +7,7 @@ services:
     image: devops-auth
     container_name: devops-auth
     ports:
-      - '3001:3001'
+      - '3001:3000'
     environment:
       - TOKEN=123321
     restart: always
@@ -21,10 +21,9 @@ services:
     image: devops-users
     container_name: devops-users
     ports:
-      - '3002:3002'
+      - '3002:3000'
     environment:
-      - AUTH_URL=http://192.168.100.108:3001
-      - USER_NAME=HASEEB
+      - AUTH_URL=http://192.168.43.190:3001
     restart: always
     depends_on:
       - devops-auth

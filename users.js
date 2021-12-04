@@ -3,7 +3,7 @@ const axios = require('axios');
 
 const app = express();
 
-const PORT = process.env.PORT || 3002;
+const PORT = process.env.PORT || 3000;
 
 app.get('/', (req, res) => {
   let { token } = req.query;
