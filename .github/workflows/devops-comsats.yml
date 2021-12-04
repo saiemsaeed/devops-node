@@ -6,9 +6,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: docker build -f Dockerfile-auth -t devops-auth:v1.0.0
+      - run: docker build -f Dockerfile-auth -t devops-auth:v1.0.0 .
   Build-Users-Service-Image:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: docker build -f Dockerfile-users -t devops-users:v1.0.0
+      - run: docker build -f Dockerfile-users -t devops-users:v1.0.0 .
