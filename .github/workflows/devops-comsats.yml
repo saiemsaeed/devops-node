@@ -9,8 +9,9 @@ jobs:
       - env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-        run: echo "$DOCKER_USERNAME"
-      - run: docker build -f Dockerfile-auth -t devops-auth:$(date +%s) .
+        run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+      - run: docker build -f Dockerfile-auth -t saiemsaeed/devops-auth:v1.0.0 .
+      - run: docker push saiemsaeed/devops-users
   Build-Users-Service-Image:
     runs-on: ubuntu-latest
     steps:
@@ -18,5 +19,6 @@ jobs:
       - env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-        run: echo "$DOCKER_USERNAME"
-      - run: docker build -f Dockerfile-users -t devops-users:$(date +%s) .
+        run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+      - run: docker build -f Dockerfile-users -t saiemsaeed/devops-users:v1.0.0 .
+      - run: docker push saiemsaeed/devops-users
