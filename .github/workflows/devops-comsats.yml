@@ -11,7 +11,7 @@ jobs:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
           DATE: $(date)
         run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-      - run: docker build -f Dockerfile-auth -t saiemsaeed/devops-auth-service:$DATE .
+      - run: docker build -f Dockerfile-auth -t saiemsaeed/devops-auth-service:$(DATE) .
       - run: docker push saiemsaeed/devops-auth-service:$DATE
   Build-Users-Service-Image:
     runs-on: ubuntu-latest
@@ -22,5 +22,5 @@ jobs:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
           DATE: $(date)
         run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-      - run: docker build -f Dockerfile-users -t saiemsaeed/devops-users-service:$DATE .
+      - run: docker build -f Dockerfile-users -t saiemsaeed/devops-users-service:$(DATE) .
       - run: docker push saiemsaeed/devops-users-service:$DATE
