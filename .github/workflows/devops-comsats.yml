@@ -1,8 +1,9 @@
 name: GitHub Actions Demo
 on: [push]
 jobs:
-  Sample-Action:
+  Sample-Job:
     runs-on: ubuntu-latest
     steps:
       - run: echo "🎉 Hello my name is Saiem Saeed!!!"
       - run: echo "🍏 I'm teaching DevOps to BSE 8B"
+      - run: echo "🍏 Class CR is MOAZ"
