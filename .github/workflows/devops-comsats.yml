@@ -1,9 +1,14 @@
 name: GitHub Actions Demo
 on: [push]
+  
 jobs:
-  Sample-Job:
+  Build-Auth-Service-Image:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "🎉 Hello my name is Saiem Saeed!!!"
-      - run: echo "🍏 I'm teaching DevOps to BSE 8B"
-      - run: echo "🍏 Class CR is MOAZ"
+      - uses: action/checkout@v2
+      - run: docker build -f Dockerfile-auth -t devops-auth:v1.0.0
+  Build-Users-Service-Image:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: action/checkout@v2
+      - run: docker build -f Dockerfile-users -t devops-users:v1.0.0
